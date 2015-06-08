@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Appointment.Web.Model.Appointments>
+
+@{
+    ViewBag.Title = "Booked Time Zones";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone)
+            </td>
+            <td>
+                @{
+        var enumValue = (Appointment.Web.Model.AppointmentTypes)item.Type;
+        string stringValue = enumValue.ToString();
+        @stringValue
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+
+        </tr>
+    }
+
+</table>
